@@ -7,11 +7,13 @@ public class Control : MonoBehaviourPun
 {
     Mover mover;
     Camera cam;
+    Attacker attacker;
 
     void Start()
     {
         cam = FindObjectOfType<Camera>();
         mover = GetComponent<Mover>();
+        attacker = GetComponent<Attacker>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,10 @@ public class Control : MonoBehaviourPun
                 {
                     mover.Tracking(hit.point);
                 }
+            }
+            if (Input.GetMouseButton(1))
+            {
+                attacker.UseAttack();
             }
         }
     }
